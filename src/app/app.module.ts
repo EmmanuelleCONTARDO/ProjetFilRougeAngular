@@ -8,6 +8,7 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatToolbarModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {FlexLayoutModule } from '@angular/flex-layout';
+
 import { AppRoutingModule } from './/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AlimentsComponent } from './aliments/aliments.component';
@@ -50,7 +51,7 @@ const routes: Routes = [
 component: Page404Component  }
 ];
 
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +72,8 @@ component: Page404Component  }
     MatToolbarModule,
     FlexLayoutModule,
     MatCardModule,
+     MatSelectModule
+ 
     AppRoutingModule,
     RouterModule.forRoot(routes),
     MatAutocompleteModule,
@@ -78,7 +81,7 @@ component: Page404Component  }
     MatInputModule,
     FormsModule,
     ReactiveFormsModule
-  ],
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })
