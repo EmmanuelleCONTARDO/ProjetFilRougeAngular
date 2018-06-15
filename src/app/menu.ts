@@ -3,4 +3,5 @@ export interface Menu {
     name: string;
     description: string;
     position: string;
+    path: string;
 }

@@ -1,15 +1,16 @@
-<mat-toolbar color="Primary" fxLayout="column" fxLayoutAlign="center">
+<mat-toolbar color="accent" fxLayout="column" fxLayoutAlign="center">
   <div class="titre" fxLayoutAlign="center">
-    Votre appli Nutrition and Wellness !
+    Votre appli Nutrition & Wellness !
   </div>
 
   <div fxLayoutAlign="space-around">
-    <span *ngFor="let m of menuService.getList('header')" [style.color]="menuService.selectedMenu.name === m.name ? 'white' : 'blue'"
-      (click)="selectMenu(m, $event)" href="#">
+    <a *ngFor="let m of menuService.getList('header')" [style.color]="menuService.selectedMenu.name === m.name ? 'white' : 'blue'"
+      (click)="selectMenu(m, $event)" routerLink="{{m.path}}">
       {{m.name}}
-    </span>
+    </a>
   </div>
 </mat-toolbar>
+
 
 
 
