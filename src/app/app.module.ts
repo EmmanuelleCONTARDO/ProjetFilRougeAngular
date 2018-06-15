@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
-import { MatToolbarModule, MatCardModule,    } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,7 +17,7 @@ import { HistoriqueComponent } from './historique/historique.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
 import { Page404Component } from './page404/page404.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -72,7 +72,12 @@ component: Page404Component  }
     FlexLayoutModule,
     MatCardModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
