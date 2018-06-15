@@ -8,6 +8,7 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatToolbarModule, MatCardModule,  } from '@angular/material';
 import {FlexLayoutModule } from '@angular/flex-layout';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
