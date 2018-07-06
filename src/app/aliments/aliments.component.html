@@ -2,15 +2,17 @@
     Page Aliments under construction !!
 </p>
 
-<form [formGroup]="stateForm">
+<div class="center-div">
+<form [formGroup]="foodForm">
     <mat-form-field>
-      <input matInput type="text" matInput placeholder="States Group" formControlName="stateGroup" required [matAutocomplete]="autoGroup"/>
+      <input matInput type="text" matInput placeholder="Aliment..." formControlName="foodsGroup" required [matAutocomplete]="autoGroup"/>
         <mat-autocomplete #autoGroup="matAutocomplete">
-          <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-            <mat-option *ngFor="let name of group.names" [value]="name">
-              {{ name }}
+          <mat-optgroup *ngFor="let group of foodsGroupOptions | async" [label]="group.categorie">
+            <mat-option *ngFor="let food of group.foods" [value]="food">
+              {{ food }}
             </mat-option>
         </mat-optgroup>
       </mat-autocomplete>
     </mat-form-field> 
   </form>  
+</div>
