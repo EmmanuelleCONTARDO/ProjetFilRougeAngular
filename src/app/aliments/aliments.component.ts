@@ -1,27 +1,9 @@
 import { MatTableDataSource } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
-
-
-
-
-
-const tomate = {
-  nameFood: 'Tomate',
-  ig: 10,
-  portion: 10,
-  glucides: 10,
-  cg: 10,
-  energie: 10,
-  proteines: 10,
-  lipides: 10,
-  commentaires: ''
-};
-
-// const ELEMENT_DATA: AlimentsTable[] = [
-//   tomate,
-//   tomate,
-// ];
+import { FoodsGroup, AutoComplFoodsGroup,  Foods, AutoComplFoods } from './../foods_group';
+import { FoodsService} from './../foods.service';
+import { Column } from 'ng2-smart-table/lib/data-set/column';
 
 
 
@@ -29,19 +11,13 @@ const tomate = {
   selector: 'app-aliments',
   templateUrl: './aliments.component.html',
   styleUrls: ['./aliments.component.css'],
-//   template: `
-//   <ng2-smart-table
-//     [settings]="settings"
-//     [source]="source"
-//     (deleteConfirm)="onDeleteConfirm($event)"
-//     (editConfirm)="onSaveConfirm($event)"
-//     (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
-// `
-
 })
 
-export class AlimentsComponent {
+export class AlimentsComponent  {
 
+  constructor(public foodsService: FoodsService) {
+    this.source = new LocalDataSource(this.data);
+  }
 
   settings = {
     Supprimer: {
@@ -55,109 +31,81 @@ export class AlimentsComponent {
     },
     columns: {
       id: {
-        title: 'ID',
+        title: 'Identifiant',
         editable: false,
+        sort: true,
+        filter: true,
       },
       name: {
-        title: 'Full Name',
+        title: 'Aliment',
         editable: true,
         sort: true,
+        width: '30%',
+        filter: true,
+        // filter: {
+        //   type: 'list',
+        //   config: {
+        //     selectText: ' ',
+        //     list:  this.foodsService.autoCFG2,
+        //   },
+        // },
       },
-      username: {
-        title: 'User Name',
+      categorie: {
+        title: 'Catégorie',
+        editable: false,
+        sort: true,
+        filter: true,
       },
-      email: {
-        title: 'Email',
+      glycIndex: {
+        title: 'Indice Glycémique',
+        editable: false,
+        sort: true,
+        filter: true,
+      },
+      energy: {
+        title: 'Glucides',
+        editable: false,
+        sort: true,
+        filter: true,
+      },
+      carboHydrates : {
+        title: 'Energie',
+        editable: false,
+        sort: true,
+        filter: true,
+
+      },
+      proteins : {
+        title: 'Protéine',
+        editable: false,
+        sort: true,
+        filter: true,
+
+      },
+      lipids : {
+        title: 'Lipide',
+        editable: false,
+        sort: true,
+        filter: true,
+
+      },
+      comment : {
+        title: 'Commentaire',
+        editable: true,
+        sort: true,
+        filter: true,
       },
     },
   };
 
-  data = [
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      username: 'Bret',
-      email: 'Sincere@april.biz',
-      notShownField: true,
-
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      username: 'Antonette',
-      email: 'Shanna@melissa.tv',
-      notShownField: true,
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      username: 'Samantha',
-      email: 'Nathan@yesenia.net',
-      notShownField: false,
-    },
-    {
-      id: 4,
-      name: 'Patricia Lebsack',
-      username: 'Karianne',
-      email: 'Julianne.OConner@kory.org',
-      notShownField: false,
-    },
-    {
-      id: 5,
-      name: 'Chelsey Dietrich',
-      username: 'Kamren',
-      email: 'Lucio_Hettinger@annie.ca',
-      notShownField: false,
-    },
-    {
-      id: 6,
-      name: 'Mrs. Dennis Schulist',
-      username: 'Leopoldo_Corkery',
-      email: 'Karley_Dach@jasper.info',
-      notShownField: false,
-    },
-    {
-      id: 7,
-      name: 'Kurtis Weissnat',
-      username: 'Elwyn.Skiles',
-      email: 'Telly.Hoeger@billy.biz',
-      notShownField: false,
-    },
-    {
-      id: 8,
-      name: 'Nicholas Runolfsdottir V',
-      username: 'Maxime_Nienow',
-      email: 'Sherwood@rosamond.me',
-      notShownField: true,
-    },
-    {
-      id: 9,
-      name: 'Glenna Reichert',
-      username: 'Delphine',
-      email: 'Chaim_McDermott@dana.io',
-      notShownField: false,
-    },
-    {
-      id: 10,
-      name: 'Clementina DuBuque',
-      username: 'Moriah.Stanton',
-      email: 'Rey.Padberg@karina.biz',
-      notShownField: false,
-    },
-    {
-      id: 11,
-      name: 'Nicholas DuBuque',
-      username: 'Nicholas.Stanton',
-      email: 'Rey.Padberg@rosamond.biz',
-      notShownField: true,
-    }
-  ];
+  data = this.foodsService.listFood;
 
   source: LocalDataSource;
 
-  constructor() {
-    this.source = new LocalDataSource(this.data);
-  }
+
+
+//   rowSelect(event) {
+// }
 
   onDeleteConfirm(event) {
     if (window.confirm('Are you sure you want to delete?')) {

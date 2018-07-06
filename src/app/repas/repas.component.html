@@ -39,18 +39,18 @@
     <tbody>
       <tr  id="rowToClone">
         <td class="large">
-          <form [formGroup]="stateForm">
-            <mat-form-field class="autoCompletion">
-              <input matInput type="text" matInput placeholder="Sélectionner votre aliment" formControlName="stateGroup" required [matAutocomplete]="autoGroup"/>
-              <mat-autocomplete #autoGroup="matAutocomplete">
-                <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-                  <mat-option *ngFor="let name of group.names" [value]="name">
-                    {{ name }}
-                  </mat-option>
+          <form [formGroup]="foodForm">
+            <mat-form-field>
+              <input matInput type="text" matInput placeholder="Aliment..." formControlName="foodsGroup" required [matAutocomplete]="autoGroup"/>
+                <mat-autocomplete #autoGroup="matAutocomplete">
+                  <mat-optgroup *ngFor="let group of foodsGroupOptions | async" [label]="group.categorie">
+                    <mat-option *ngFor="let food of group.foods" [value]="food">
+                      {{ food }}
+                    </mat-option>
                 </mat-optgroup>
               </mat-autocomplete>
-            </mat-form-field>
-          </form>
+            </mat-form-field> 
+          </form>  
           <!-- <input type="text" name="AlimentName" value=""> -->
         </td>
         <td class="small">

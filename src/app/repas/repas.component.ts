@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from './../menu.service';
+import { FoodsService} from './../foods.service';
 
 import { AutocompletionService} from './../autocompletion.service';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 import {StateGroup } from './../state_group';
-
+import { FoodsGroup, AutoComplFoodsGroup,  Foods } from './../foods_group';
 
 
 
@@ -24,13 +25,13 @@ export class RepasComponent implements OnInit {
     {value: 'diner-2', viewValue: 'Diner'}
   ];
 
-  stateForm: FormGroup = this.fb.group({
-    stateGroup: '',
+  foodForm: FormGroup = this.fb.group({
+    foodsGroup: ''
   });
 
- stateGroupOptions: Observable<StateGroup[]>;
+foodsGroupOptions: Observable<AutoComplFoodsGroup[]>;
 
-  constructor(public menuService: MenuService, public autocompletionService: AutocompletionService, private fb: FormBuilder) { }
+  constructor(public menuService: MenuService, public autocompletionService: FoodsService, private fb: FormBuilder) { }
 
 
 
@@ -50,7 +51,7 @@ export class RepasComponent implements OnInit {
 
 
   ngOnInit() {
-    this.stateGroupOptions = this.stateForm.get('stateGroup').valueChanges
+    this.foodsGroupOptions = this.foodForm.get('foodsGroup').valueChanges
       .pipe(
         startWith(''),
         map(val => this.filterGroup(val))
@@ -71,14 +72,14 @@ addRow() {
 }
 
  // constructor(private fb: FormBuilder) { }
- filterGroup(val: string): StateGroup[] {
+ filterGroup(val: string): AutoComplFoodsGroup[] {
   if (val) {
-    return this.autocompletionService.stateGroups
-      .map(group => ({ letter: group.letter, names: this._filter(group.names, val) }))
-      .filter(group => group.names.length > 0);
+    return this.autocompletionService.autoCFG
+    .map(group => ({ categorie: group.categorie, foods: this._filter(group.foods, val) }))
+    .filter(group => group.foods.length > 0);
   }
 
-  return this.autocompletionService.stateGroups;
+  return this.autocompletionService.autoCFG;
 }
 
   private _filter(opt: string[], val: string) {

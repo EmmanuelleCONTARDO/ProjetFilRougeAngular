@@ -43,7 +43,7 @@
 <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
 
-  <!--- Note that these columns can be defined in any order.
+  <!- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
 
@@ -109,12 +109,11 @@
 </table> --> 
 
 <div  class="TEST">
-    
-
-<ng2-smart-table
+  <ng2-smart-table
     [settings]="settings"
     [source]="source"
     (deleteConfirm)="onDeleteConfirm($event)"
     (editConfirm)="onSaveConfirm($event)"
-    (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
+    (createConfirm)="onCreateConfirm($event)">
+  </ng2-smart-table>
 </div>
