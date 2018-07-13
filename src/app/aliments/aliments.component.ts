@@ -52,6 +52,7 @@ export class AlimentsComponent implements OnInit {
         editable: false,
         sort: true,
         filter: true,
+        // show: false,
       },
       name: {
         title: 'Aliment',
@@ -72,12 +73,12 @@ export class AlimentsComponent implements OnInit {
       glycIndex: {
         title: 'IG (pour 100gr)   ',
         editable: true,
-        filter: false,
+        filter: true,
       },
       energie: {
         title: 'Energie',
         editable: false,
-        filter: false,
+        filter: true,
       },
       // portion: {
       //   title: 'Portion (en gr)',
@@ -87,23 +88,23 @@ export class AlimentsComponent implements OnInit {
       carboHydrates: {
         title: 'Glucides',
         editable: true,
-        filter: false,
+        filter: true,
 
       },
       cg: {
         title: 'CG',
         editable: false,
-        filter: false,
+        filter: true,
       },
       proteins: {
         title: 'Proteines',
         editable: false,
-        filter: false,
+        filter: true,
       },
       lipids: {
         title: 'Lipides',
         editable: false,
-        filter: false,
+        filter: true,
       },
       comments: {
         title: 'Commentaires',
@@ -112,7 +113,7 @@ export class AlimentsComponent implements OnInit {
           type: 'textarea',
         },
         width: '30%',
-        filter: false,
+        filter: true,
       },
 
 
@@ -201,23 +202,23 @@ export class AlimentsComponent implements OnInit {
     object.cg = (object.ig * (object.glucides * object.portion) / 100) / 100;
   }
 
-  onSearch(query: string = '') {
-    this.source.setFilter([
-      // fields we want to include in the search
-      {
-        field: 'nameAliment',
-        search: query
-      },
-      {
-        field: 'ig',
-        search: query
-      },
+  // onSearch(query: string = '') {
+  //   this.source.setFilter([
+  //     // fields we want to include in the search
+  //     {
+  //       field: 'nameAliment',
+  //       search: query
+  //     },
+  //     {
+  //       field: 'ig',
+  //       search: query
+  //     },
 
-    ], false);
-    // second parameter specifying whether to perform 'AND' or 'OR' search
-    // (meaning all columns should contain search query or at least one)
-    // 'AND' by default, so changing to 'OR' by setting false here
-  }
+  //   ], false);
+  //   // second parameter specifying whether to perform 'AND' or 'OR' search
+  //   // (meaning all columns should contain search query or at least one)
+  //   // 'AND' by default, so changing to 'OR' by setting false here
+  // }
 
 
 
