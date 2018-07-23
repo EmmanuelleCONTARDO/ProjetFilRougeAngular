@@ -147,6 +147,7 @@ export class RepasComponent implements OnInit {
     for (i = 0; i < this.foodsRow.length; i++) {
       sum += this.foodsRow[i].cg;
     }
+    sum = Number.parseFloat(Number(sum).toFixed(2));
     return sum;
   }
 

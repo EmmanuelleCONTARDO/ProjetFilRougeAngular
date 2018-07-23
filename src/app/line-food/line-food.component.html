@@ -24,7 +24,7 @@
       </div>
       <div class="col-md-1">
           <label class="marginDown">Portion</label>
-        <input [(ngModel)]="foodRow.portion" (change)="calculCG()" type="number" class="form-control">
+        <input [(ngModel)]="foodRow.portion" (change)="calculCG()" type="number" pattern="[0-9.]*" class="form-control">
       </div>
       <div class="col-md-1">
           <label class="marginDown">Glucides</label>

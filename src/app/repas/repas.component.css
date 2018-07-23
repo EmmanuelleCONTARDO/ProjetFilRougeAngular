@@ -80,4 +80,5 @@ container-fluid {
   font-size: 25px;
   color: #FF5E4D;
   text-align: left;
+  outline-style:none;
 }

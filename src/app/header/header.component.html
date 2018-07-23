@@ -1,15 +1,18 @@
 <mat-toolbar fxLayout="column" fxLayoutAlign="center">
-  <mat-toolbar-row class="toolbar" fxLayoutAlign="space-around center" fxHide.xs>
+  <mat-toolbar-row class="toolbar" fxLayoutAlign="space-around" fxHide.xs>
     <span>Nutrition & Wellness</span>
   </mat-toolbar-row>
 
   <mat-toolbar-row class="align" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-around center" fxHide.xs>
-    <span id="fontSize" *ngFor="let m of menuService.getList('header')" [style.color]="menuService.selectedMenu.name === m.name ? 'pink' : 'grey'"
+    <a id="fontSize" *ngFor="let m of menuService.getList('header')" [style.color]="menuService.selectedMenu.name === m.name ? 'pink' : 'grey'"
       (click)="selectMenu(m, $event)" routerLink="{{m.path}}">
       {{m.name}}
-    </span>
+  </a>
   </mat-toolbar-row>
 
+  <mat-toolbar-row>
+
+ 
   <div fxHide.gt-xs>
     <button mat-icon-button [matMenuTriggerFor]="menu" class="col-md-1">
       <mat-icon fl>more_vert</mat-icon>
@@ -28,5 +31,6 @@
       </ul>
     </mat-menu>
   </div>
+</mat-toolbar-row>
 </mat-toolbar>
 &nbsp; &nbsp;
