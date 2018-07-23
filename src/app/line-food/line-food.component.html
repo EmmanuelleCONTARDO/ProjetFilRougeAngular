@@ -1,46 +1,104 @@
-<tr>
-    <td></td>
-    <td>
-      <!-- {{foodRow | json}} -->
+  <div class="container-fluid">
+    <div class="row" id="marginLeft" >
+        <div class="col-md-1" >
+          </div>
+         <div class="col-md-5"> 
+            <label>Aliments</label>
+        <form [formGroup]="foodForm">
+          <mat-form-field style="width:100%;" class="example-full-width">
+            <input class="alimentLeft" matInput type="text" matInput placeholder="Aliment..." formControlName="foodsGroup" required [matAutocomplete]="autoGroup"
+              [(ngModel)]="foodRow.nameFood">
+            <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="displayFn" (optionSelected)="getFood()">
+              <mat-optgroup *ngFor="let group of foodsGroupOptions | async" [label]="group.categorie">
+                <mat-option *ngFor="let food of group.foods" [value]="food">
+                  {{ food.name }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-md-1">
+          <label class="marginDown">IG</label>
+        <input type="number" class="form-control" [(ngModel)]="foodRow.ig">
+      </div>
+      <div class="col-md-1">
+          <label class="marginDown">Portion</label>
+        <input [(ngModel)]="foodRow.portion" (change)="calculCG()" type="number" class="form-control">
+      </div>
+      <div class="col-md-1">
+          <label class="marginDown">Glucides</label>
+        <input type="number" class="form-control" [(ngModel)]="foodRow.glucides">
+      </div>
 
-      <form [formGroup]="foodForm">
-        <mat-form-field>
-          <input matInput type="text" matInput placeholder="Aliment..." formControlName="foodsGroup" required [matAutocomplete]="autoGroup"
-            [(ngModel)]="foodRow.nameFood" />
-          <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="displayFn" (optionSelected)="getFood()">
-            <mat-optgroup *ngFor="let group of foodsGroupOptions | async" [label]="group.categorie">
-              <mat-option *ngFor="let food of group.foods" [value]="food">
-                {{ food.name }}
-              </mat-option>
-            </mat-optgroup>
-          </mat-autocomplete>
-        </mat-form-field>
-      </form>
-    </td>
-    <td>
-      <label for="ig"></label>
-      <input [(ngModel)]="foodRow.ig" type="number" name="ig" id="ig" step="0.01" min="0" class="bordure">
-    </td>
-    <td>
-      <label for="portion"></label>
-      <input [(ngModel)]="foodRow.portion" (change)="calculCG()" type="number" class="bordure" name="portion" id="portion" step="0.01"
-        min="0">
-    </td>
-    <td>
-      <label for="glucides"></label>
-      <input [(ngModel)]="foodRow.glucides" type="number" class="bordure" name="glucides" id="glucides" step="0.01" min="0">
-    </td>
-    <td>
-      <label></label>
-
-      <input disabled [(ngModel)]="foodRow.cg" type="number" class="bordure" name="glucides" id="glucides" step="0.01" min="0">
-
-    </td>
-    <td>
-      <button mat-icon-button>
-        <mat-icon style="font-size:25px; color:#FF5E4D" aria-label="Delete" (click)="deleteFoodRow(index)">delete</mat-icon>
-      </button>
+      <div class="col-md-1">
+          <label class="marginDown">CG</label>
+        <p  class="cellulecg">{{ foodRow.cg }}</p>
+      </div>
+      <div class="col-md-1" >
+          <label class="marginDownD"></label>
+        <button mat-icon-button  class="delete"> 
+          <mat-icon  aria-label="Delete" (click)="deleteFoodRow(index)">delete</mat-icon>
+        </button>
+      </div>
+      <div class="col-md-1">
+     </div>
+    </div>
+  </div>
 
 
-    </td>
-  </tr>
+
+<!-- <table>
+        <thead *ngIf="index === 0">
+
+          <th>Aliments</th>
+          <th>IG</th>
+          <th>Portion
+            <br> (en gr)</th>
+          <th>Glucides</th>
+          <th>CG</th>
+          <th></th>
+        </thead>
+
+        <tr>
+          <td width="30%;" class="aliment">
+          
+            <form [formGroup]="foodForm">
+              <mat-form-field style="width:90%;" class="example-full-width">
+                <input matInput type="text" matInput placeholder="Aliment..." formControlName="foodsGroup" required [matAutocomplete]="autoGroup"
+                  [(ngModel)]="foodRow.nameFood" />
+                <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="displayFn" (optionSelected)="getFood()">
+                  <mat-optgroup *ngFor="let group of foodsGroupOptions | async" [label]="group.categorie">
+                    <mat-option *ngFor="let food of group.foods" [value]="food">
+                      {{ food.name }}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+          </td>
+          <td width="5%" class="ig">
+            <label for="ig"></label>
+            <input style="width:100%;" [(ngModel)]="foodRow.ig" type="number" name="ig" id="ig" step="0.01" min="0" maxlength="4" size="4"
+              class="bordure">
+          </td>
+          <td width="5%">
+            <label for="portion"></label>
+            <input style="width:100%;" [(ngModel)]="foodRow.portion" (change)="calculCG()" type="number" class="bordure" name="portion"
+              id="portion" step="10.00" min="100">
+          </td>
+          <td width="5%">
+            <label for="glucides"></label>
+            <input style="width:100%;" [(ngModel)]="foodRow.glucides" type="number" name="glucides" id="glucides" step="0.01" min="0">
+          </td>
+          <td width="5%">
+            <label for="cg"></label>
+            <input style="width:100%;" [(ngModel)]="foodRow.cg" type="number" name="cg" disabled maxlength="4" size="4">
+          </td>
+          <td>
+            <button mat-icon-button style="width:100%;">
+              <mat-icon style="font-size:25px; color:#FF5E4D" aria-label="Delete" (click)="deleteFoodRow(index)">delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table> -->

@@ -17,11 +17,9 @@ import { HistoriqueComponent } from './historique/historique.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
 import { Page404Component } from './page404/page404.component';
-import { MatChipsModule, MatTableModule, MatIconModule } from '@angular/material';
+import { MatChipsModule, MatTableModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule } from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
-
-
-
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 
@@ -29,13 +27,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatToolbarModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LineFoodComponent } from './line-food/line-food.component';
+import { MatTabNavBase } from '@angular/material/tabs/typings/tab-nav-bar';
 
 
 
 
 const routes: Routes = [
   { path: '',
-   redirectTo: 'aliments', pathMatch: 'full' },
+   redirectTo: 'connexion', pathMatch: 'full' },
    {
     path: 'repas',
     component: RepasComponent
@@ -104,7 +103,15 @@ component: Page404Component  }
     MatButtonModule,
     Ng2SmartTableModule,
     MatIconModule,
-            ],
+    MatSidenavModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    ],
 
 
   providers: [],

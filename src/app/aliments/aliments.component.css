@@ -1,25 +1,43 @@
-
+:host /deep/ ng2-smart-table table>thead>tr>th {
+  text-align: center;
+}
 
 /* ng2-smart-table*/
+
 :host /deep/ ng2-smart-table table {
- font-size: 15px;
- text-align: center;
+  font-size: 15px;
+  text-align: center;
+}
+
+:host /deep/ ng2-smart-table tbody>tr>td:first-child {
+  text-align: left;
+}
+
+:host /deep/ ng2-smart-table tbody>tr>td:nth-child(2) {
+  text-align: left;
+}
+
+:host /deep/ ng2-smart-table tbody>tr>td:nth-child(4) {
+  font-variant-numeric: normal;
 
 }
 
-/* :host /deep/ ng2-smart-table tbody > tr > td:first-child { 
-	text-align: left; 
-        background-color:red;
-        color: royalblue;
+
+/* :host /deep/ ng2-smart-table tbody>tr>td:nth-child(3) {
+  text-align: left;
 } */
 
-host /deep/ ng2-smart-table tbody > tr > td:child(1) { 
+:host /deep/ ng2-smart-table tbody>tr>td:nth-child(9) {
+  text-align: left;
+}
+
+/* :host /deep/ ng2-smart-table tbody > th:nth-child(2) { 
 	text-align: left; 
   background-color: green;  
   color: red;
-}
+} */
 
-:host /deep/ ng2-smart-table tbody > tr > td {
+:host /deep/ ng2-smart-table tbody>tr>td {
   border-bottom: 1px solid grey;
   font-size: .875em;
   padding: .375em .75em;
@@ -29,26 +47,22 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
   border-bottom: 1px solid black !important;
 }
 
-:host /deep/ ng2-smart-row > tr {
+:host /deep/ ng2-smart-row>tr {
   border-bottom: 1px solid black !important;
 }
 
-:host /deep/ ng2-smart-row > td {
+:host /deep/ ng2-smart-row>td {
   border-bottom: 1px solid black !important;
 }
 
-:host /deep/ ng2-smart-table_cell {
-  border-bottom: 1px solid red !important;
-}
-
-:host /deep/ ng2-smart-table tbody > tr > td > a {
+:host /deep/ ng2-smart-table tbody>tr>td>a {
   color: grey;
   text-decoration: none;
   font-size: small;
   font-weight: bold;
 }
 
-:host /deep/ ng2-smart-table tbody > tr > th > a {
+:host /deep/ ng2-smart-table tbody>tr>th>a {
   color: grey;
   text-decoration: none;
   font-size: small;
@@ -56,6 +70,7 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
 }
 
 /* clickable paging number */
+
 :host /deep/ a.ng2-smart-page-link.page-link {
   height: 22px;
   width: 40px;
@@ -65,7 +80,9 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
   font-weight: bold;
   line-height: 6px;
 }
+
 /* selected paging number */
+
 :host /deep/ span.ng2-smart-page-link.page-link {
   height: 22px;
   width: 40px;
@@ -87,6 +104,7 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
 }
 
 /* previous paging button */
+
 :host /deep/ a.ng2-smart-page-link.page-link.page-link-prev {
   height: 22px;
   width: 40px;
@@ -98,6 +116,7 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
 }
 
 /* previous paging button disabled */
+
 :host /deep/ span.ng2-smart-page-link.page-link.page-link-prev.disabled {
   height: 22px;
   width: 40px;
@@ -109,6 +128,7 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
 }
 
 /* next paging button */
+
 :host /deep/ a.ng2-smart-page-link.page-link.page-link-next {
   height: 22px;
   width: 40px;
@@ -120,6 +140,7 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
 }
 
 /* next paging button */
+
 :host /deep/ span.ng2-smart-page-link.page-link.page-link-next.disabled {
   height: 22px;
   width: 40px;
@@ -129,9 +150,6 @@ host /deep/ ng2-smart-table tbody > tr > td:child(1) {
   font-weight: bold;
   line-height: 6px;
 }
-  
-
-
 
 /* .search {
     border-radius: 5px;

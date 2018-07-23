@@ -103,8 +103,9 @@ export class LineFoodComponent implements OnInit {
   }
 
   calculCG(i: number) {
-    console.log('ch=' + (this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100);
+    console.log('ch=' + ((this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100).toFixed(2));
     this.foodRow.cg = (this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100;
+    this.foodRow.cg = Number.parseFloat(Number(this.foodRow.cg).toFixed(2));
     // return (this.foodsRow[i].ig * (this.foodsRow[i].glucides * this.foodsRow[i].portion) / 100) / 100;
     // cg.value= (ig.value * (glucides.value* portion.value)/100)/100
   }

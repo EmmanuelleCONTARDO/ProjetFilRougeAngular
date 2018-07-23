@@ -68,7 +68,7 @@
     <td mat-cell *matCellDef="let element"> {{element.portion}} </td>
   </ng-container> -->
 
-<div>
+<div id="table">
   <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
   <ng2-smart-table [settings]="settings" [source]="source"
   (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)">

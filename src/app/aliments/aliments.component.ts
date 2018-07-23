@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { Foods, ListFoods } from '../foods_group';
+import { formatNumber } from '@angular/common';
 
 
 
@@ -22,43 +23,47 @@ export class AlimentsComponent implements OnInit {
 
   settings = {
     actions: {
+      add: true,
+      edit: true,
+      delete: true,
       position: 'right',
       columnTitle: '',
-
-      delete: {
-        // deleteButtonContent: 'Supprimer',
-        confirmDelete: true,
-        deleteButtonContent: '  <span class="glyphicon glyphicon-remove table-actions-button"></span>  ',
-        mode: 'external'
-      },
-      add: {
-        // addButtonContent: 'Ajouter',
-        confirmCreate: true,
-        addButtonContent: '<span class="glyphicon glyphicon-plus">'
-      },
-      edit: {
-        confirmSave: true,
-        editButtonContent: '<span class="glyphicon glyphicon-pencil"></span>'
-      },
     },
+
+       delete: {
+      // deleteButtonContent: 'Supprimer',
+      confirmDelete: true,
+      deleteButtonContent: '<i class="glyphicon glyphicon-trash table-actions-button"></i>',
+      mode: 'external'
+    },
+    add: {
+      // addButtonContent: 'Ajouter',
+      confirmCreate: true,
+      addButtonContent: '<span class="glyphicon glyphicon-plus">',
+    },
+    edit: {
+      confirmSave: true,
+      editButtonContent: '<span class="glyphicon glyphicon-pencil"></span>',
+    },
+
     setPaging: true,
 
     pager: {
       display: true,
     },
     columns: {
-      id: {
-        title: 'Identifiant',
-        editable: false,
-        sort: true,
-        filter: true,
-        // show: false,
-      },
+      // id: {
+      //   title: 'Identifiant',
+      //   editable: false,
+      //   sort: true,
+      //   filter: true,
+      //   display: false,
+      // },
       name: {
         title: 'Aliment',
         editable: true,
         sort: true,
-        width: '30%',
+        width: '20%',
         filter: true,
         editor: {
           type: 'textarea',
@@ -67,44 +72,49 @@ export class AlimentsComponent implements OnInit {
       categorie: {
         title: 'Catégorie',
         editable: true,
+        width: '20%',
         sort: true,
         filter: true,
       },
       glycIndex: {
-        title: 'IG (pour 100gr)   ',
+        title: 'IG (pour 100gr)',
         editable: true,
         filter: true,
-      },
-      energie: {
+        width: '9%',
+       editor: {
+        type: 'text'
+           }
+    },
+      energy: {
         title: 'Energie',
-        editable: false,
+        editable: true,
         filter: true,
+        width: '9%',
+        type: 'text'
       },
-      // portion: {
-      //   title: 'Portion (en gr)',
-      //   editable: true,
-      //   filter: false,
-      // },
-      carboHydrates: {
+        carboHydrates: {
         title: 'Glucides',
         editable: true,
-        filter: true,
-
-      },
-      cg: {
-        title: 'CG',
-        editable: false,
+        width: '9%',
         filter: true,
       },
+      // cg: {
+      //   title: 'CG',
+      //   editable: false,
+      //   filter: true,
+      // },
       proteins: {
         title: 'Proteines',
-        editable: false,
+        editable: true,
         filter: true,
+        width: '9%'
       },
+
       lipids: {
         title: 'Lipides',
         editable: false,
         filter: true,
+        width: '9%'
       },
       comments: {
         title: 'Commentaires',
@@ -112,7 +122,7 @@ export class AlimentsComponent implements OnInit {
         editor: {
           type: 'textarea',
         },
-        width: '30%',
+        width: '15%',
         filter: true,
       },
 

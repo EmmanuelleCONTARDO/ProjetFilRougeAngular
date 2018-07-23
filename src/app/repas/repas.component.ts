@@ -38,11 +38,13 @@ export class RepasComponent implements OnInit {
     {
       nameFood: null,
       ig: 0,
-      portion: 0,
+      portion: 100,
       glucides: 0,
       cg: 0,
     }
   ];
+
+  maxIndex: number = this.foodsRow.length - 1;
 
   // private newRow: any = {};
   constructor(public menuService: MenuService,
@@ -131,7 +133,7 @@ export class RepasComponent implements OnInit {
     const newRow = {
       nameFood: null,
       ig: 0 ,
-      portion: 0,
+      portion: 100,
       glucides: 0,
       cg: 0,
     };
@@ -148,51 +150,8 @@ export class RepasComponent implements OnInit {
     return sum;
   }
 
-  // addFoodRow() {
-  //   const newRow = {
-  //     nameFood: '',
-  //     ig: 40,
-  //     portion: 0,
-  //     glucides: 2.6,
-  //     cg: 0,
-  //   };
-  //   this.foodsRow.push(newRow);
-  //   // this.newRow = {};
-  // }
-
-  // deleteFoodRow(i) {
-  //   this.foodsRow.splice(i, 1);
-  // }
-
-
-
-  // getSum(i: number): number {
-  //   let sum = 0;
-  //   for (i = 0; i < this.foodsRow.length; i++) {
-  //     sum += this.foodsRow[i].cg;
-  //   }
-  //   return sum;
-  // }
-
-  //  cloneRow() {
-  //     const row = document.getElementById('rowToClone'); // find row to copy
-  //     const table = document.getElementById('tableau'); // find table to append to
-  //     const clone = row.cloneNode(true); // copy children too
-  //     // clone.id = 'newID'; // change id or other attributes/contents
-  //     table.appendChild(clone); // add new row to end of table
-  //   }
-
-
-
-
-
-
-
-  // tslint:disable-next-line:member-ordering
+ // tslint:disable-next-line:member-ordering
   public row: any = [{}];
 
-  // Add New Row
-//   addRow() {
-//     this.row.push({});
-//   }
+
  }
